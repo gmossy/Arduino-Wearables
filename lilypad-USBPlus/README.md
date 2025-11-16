@@ -8,8 +8,8 @@ This folder contains the **device-specific** code and docs for the
 - Author: Glenn Mossy
 
 Use this when you want **copy-paste commands, wiring diagrams, and a
-MacBook + Windsurf workflow** that you can show to interviewers,
-students, and makerspace friends.
+MacBook + Windsurf workflow** that you can share with students,
+friends, and makerspace communities.
 
 ---
 
@@ -33,7 +33,6 @@ light-show + small interaction lab:
 
 This is designed to be:
 
-- **Interview-ready**: you can walk through the code and animations.
 - **Makerspace-friendly**: good first demo for wearable workshops.
 - **Extendable**: add more patterns, sensors, or serial commands.
 
@@ -195,7 +194,7 @@ and update the `-p` value accordingly.
 
 ## What to Demo (Talk Track)
 
-When showing this project to interviewers or students, you can say:
+When showing this project to students or friends, you can say:
 
 1. **Board intro**
    - "This is a SparkFun LilyPad USB Plus, an Arduino-compatible
@@ -267,4 +266,4 @@ You can run a simple workshop around this board and sketch:
 ---
 
 Enjoy hacking on the LilyPad USB Plus and turning wearables into
-interview-ready and classroom-ready light shows!
+fun, classroom-ready light shows!

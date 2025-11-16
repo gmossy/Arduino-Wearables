@@ -2,7 +2,7 @@
 
 This repo is my playground for wearable electronics using the **SparkFun LilyPad USB Plus** and the broader **Arduino wearables** ecosystem. Its designed to be:
 
-- **Interview-ready**: clean examples you can walk through with hiring managers.
+- **Learning-friendly**: clear examples you can step through and modify.
 - **Makerspace-friendly**: step-by-step instructions for students and workshop participants.
 - **Open for collaboration**: clone it, remix it, and share what you build.
 
@@ -91,7 +91,7 @@ Some quick facts handy for extending these demos:
 - **Six built-in white LEDs** on pins `15, 16, 17, 18, 19, 20`.
 - **Microcontroller**: ATmega32U4 using the Caterina bootloader (Arduino-compatible).
 
-These pins are already used in the demo sketches for color fades, chases, and sparkle effects you can show off during interviews or workshops.
+These pins are already used in the demo sketches for color fades, chases, and sparkle effects you can show off in workshops or community demos.
 
 ---
 
