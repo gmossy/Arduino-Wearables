@@ -43,84 +43,32 @@ LilyPad community discussion and troubleshooting:
 
 ## Project Overview
 
-This repo currently includes demo sketches that turn the LilyPad USB Plus into a **wearable light show**:
+This repo currently includes a **LilyPad USB Plus wearable light show demo**:
 
-- `USBPlusRGBBlink/`  minimal RGB center LED color cycle.
-- `USBPlusFunDemo/`  a full light show using the RGB LED + six white LEDs (chase, bounce, wipe, sparkle).
+- `lilypad-USBPlus/USBPlusRGBBlink/`  a curated RGB + white LED sequence with optional button and sensor support.
 
 You can:
 
-- Use these as-is for workshops or show-and-tell.
-- Fork them into your own wearable art pieces.
-- Extend them with sensors (accelerometers, buttons, light sensors, etc.).
+- Use this as-is for workshops or show-and-tell.
+- Fork it into your own wearable art pieces.
+- Extend it with sensors (accelerometers, buttons, light sensors, etc.).
+
+For **device-specific wiring, Arduino CLI commands, and Windsurf workflow**, see:
+
+- `lilypad-USBPlus/README.md`
+
+That file walks through the exact compile/upload steps and example MacBook/Windsurf setup.
 
 ---
 
-## Dev Workflow: VS Code or Windsurf + Arduino CLI
+## Editor + Tooling
 
-You can work on this project using **VS Code** or **Windsurf** as your editor, with the **Arduino CLI** doing all the compiling and uploading.
+Recommended setup:
 
-### 1. Install Arduino CLI
+- **Editor**: VS Code or Windsurf.
+- **Tooling**: Arduino CLI for building/uploading, optional `uv` + Python for helper scripts.
 
-On macOS (recommended):
-
-```bash
-brew update
-brew install arduino-cli
-```
-
-Or use the official installer: <https://arduino.github.io/arduino-cli/latest/installation/>
-
-### 2. Configure Arduino CLI for SparkFun LilyPad USB Plus
-
-```bash
-arduino-cli config init
-arduino-cli config add board_manager.additional_urls \
-  https://raw.githubusercontent.com/sparkfun/Arduino_Boards/master/IDE_Board_Manager/package_sparkfun_index.json
-arduino-cli core update-index
-arduino-cli core install SparkFun:avr
-
-# Confirm the LilyPad USB Plus FQBN is available
-arduino-cli board listall | grep -i "lilypad usb plus"
-```
-
-### 3. Open the Repo in VS Code or Windsurf
-
-- **VS Code**: `File → Open Folder...` and select the cloned repo.
-- **Windsurf**: Open the workspace folder (same repo) and use the built-in terminal.
-
-Tip: Install an **Arduino** or **C/C++** extension for syntax highlighting and IntelliSense.
-
-### 4. Connect the Board
-
-- Plug in the LilyPad USB Plus with a **data-capable** micro‑USB cable.
-- Switch the board to **ON**.
-- If the serial port doesnt appear, **double-tap RESET** to enter the bootloader.
-- List the ports:
-
-```bash
-arduino-cli board list
-```
-
-Replace `<PORT>` below with something like `/dev/cu.usbmodemXXXX`.
-
-### 5. Build and Upload from the Terminal
-
-#### RGB Blink
-
-```bash
-arduino-cli compile --fqbn SparkFun:avr:LilyPadProtoUSB lillypad/USBPlusRGBBlink
-arduino-cli upload  -p <PORT> --fqbn SparkFun:avr:LilyPadProtoUSB lillypad/USBPlusRGBBlink
-```
-
-#### Full Fun Demo
-
-```bash
-arduino-cli compile --fqbn SparkFun:avr:LilyPadProtoUSB lillypad/USBPlusFunDemo
-arduino-cli upload  -p <PORT> --fqbn SparkFun:avr:LilyPadProtoUSB lillypad/USBPlusFunDemo
-```
-
-You can run these commands directly in the **VS Code** or **Windsurf** integrated terminal so everything lives in one window.
+See the detailed instructions in `lilypad-USBPlus/README.md` if you want copy-paste commands.
 
 ---
 
@@ -128,38 +76,7 @@ You can run these commands directly in the **VS Code** or **Windsurf** integrate
 
 If you want to add Python-based tooling around this project (log viewers, animation generators, CLI helpers, etc.), you can manage that environment with **`uv`**, a fast Python package and virtual environment manager.
 
-### 1. Install `uv`
-
-See the official instructions: <https://docs.astral.sh/uv/>
-
-On macOS, a typical install looks like:
-
-```bash
-curl -LsSf https://astral.sh/uv/install.sh | sh
-```
-
-Make sure `uv` is on your `PATH` (restart your terminal if needed), then verify:
-
-```bash
-uv --version
-```
-
-### 2. Create a Project Environment
-
-From the root of this repo:
-
-```bash
-uv venv .venv
-source .venv/bin/activate
-```
-
-You can now install any Python tools you want for this project, for example:
-
-```bash
-uv pip install pyserial
-```
-
-Use this environment for helper scripts that talk to the board, visualize sensor data, or generate animation patterns. The Arduino code itself is still built and uploaded with **Arduino CLI**.
+See `lilypad-USBPlus/README.md` for one possible layout; feel free to customize it for your own workflow.
 
 ---
 
@@ -178,14 +95,11 @@ These pins are already used in the demo sketches for color fades, chases, and sp
 
 ---
 
-## What the Demos Do
+## What the Demo Does
 
-- **RGB Blink**
-  - Cycles solid colors (R, G, B, Y, M, C, White, Off) on the center RGB LED.
-
-- **Fun Demo**
-  - Flashes all LEDs, runs RGB color cycles, theater chase, bounce, wipe, and sparkle patterns across the white LEDs.
-  - Great for showing how timing, state machines, and non-blocking animation patterns work on microcontrollers.
+- **USBPlusRGBBlink**
+  - Runs a curated sequence across the built-in RGB LED and six white LEDs.
+  - Includes an optional interactive section using a button and analog sensor.
 
 ---
 
